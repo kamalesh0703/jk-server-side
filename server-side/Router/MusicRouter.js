@@ -74,6 +74,13 @@ router.put('/removePlaylist/:id',async(req,res)=>{
         next(error);
     }
 })
+router.get('/getSong/:id',(req,res)=>{
+
+  const{id}=req.params;
+  MusicSchema.find({id:id})
+     .then(data => res.json(data))
+     .catch(error => res.json(error))
+})
 
 router.get('/getMusic',(req,res)=>{
       MusicSchema.find()
